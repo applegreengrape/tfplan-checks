@@ -2,7 +2,7 @@ package cis
 
 import (
 	"fmt"
-	"tfplan/checks/cis/cloudtrail"
+	"github.com/applegreengrape/tfplan-checks/cis/cloudtrail"
 )
 
 func main()  {
