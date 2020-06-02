@@ -1,3 +1,3 @@
-module tfplan/checks/cis
+module github.com/applegreengrape/tfplan-checks/cis
 
 go 1.14
