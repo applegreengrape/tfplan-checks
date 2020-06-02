@@ -1,2 +1,0 @@
-# tfplan-checks
-tfplan-checks
