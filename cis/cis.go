@@ -5,6 +5,6 @@ import (
 	"github.com/applegreengrape/tfplan-checks/cis/cloudtrail"
 )
 
-func main()  {
+func Status()  {
 	fmt.Println(cloudtrail.Checks())
 }
