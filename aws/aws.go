@@ -15,6 +15,9 @@ func S3(typ []interface{}, value []interface{}) (string, string){
 			s, r:= s3.S3_01(value[i])
 			return s,r 
 		}
+		if typ[i] == "aws_s3_bucket"{
+			
+		}
 	}
 	return s,r 
 }
