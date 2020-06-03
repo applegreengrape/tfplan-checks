@@ -2,9 +2,30 @@ package custom
 
 import (
 	"fmt"
-	"reflect"
 )
 
+func same(x, y []string) bool {
+    if len(x) != len(y) {
+        return false
+    }
+    diff := make(map[string]int, len(x))
+    for _, _x := range x {
+        diff[_x]++
+    }
+    for _, _y := range y {
+        if _, ok := diff[_y]; !ok {
+            return false
+        }
+        diff[_y] -= 1
+        if diff[_y] == 0 {
+            delete(diff, _y)
+        }
+    }
+    if len(diff) == 0 {
+        return true
+    }
+	return false
+}
 
 func S3_Tag_Check_01(typ []interface{}, value []interface{}) (string, string){
 	var s string
@@ -20,7 +41,7 @@ func S3_Tag_Check_01(typ []interface{}, value []interface{}) (string, string){
 		}
 	}
 	
-	if reflect.DeepEqual(tags, keys){
+	if same(tags, keys){
 		s = "okay"
 		r = fmt.Sprintf(`
 	✅[Custom Checks][S3_Tag_Check_01] All Mandatory Tags found
@@ -54,7 +75,7 @@ func S3_Tag_Check_02(typ []interface{}, value []interface{}) (string, string){
 		}
 	}
 	
-	if reflect.DeepEqual(tags_2, keys_2){
+	if same(tags_2, keys_2){
 		s = "okay"
 		r = fmt.Sprintf(`
 	✅[Custom Checks][S3_Tag_Check_02] All Mandatory Tags found
