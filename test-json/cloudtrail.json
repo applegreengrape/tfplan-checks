@@ -1,0 +1,1289 @@
+{
+  "format_version": "0.1",
+  "terraform_version": "0.12.26",
+  "planned_values": {
+    "root_module": {
+      "child_modules": [
+        {
+          "resources": [
+            {
+              "address": "module.aws_cloudtrail.aws_cloudtrail.main",
+              "mode": "managed",
+              "type": "aws_cloudtrail",
+              "name": "main",
+              "provider_name": "aws",
+              "schema_version": 0,
+              "values": {
+                "enable_log_file_validation": true,
+                "enable_logging": true,
+                "event_selector": [],
+                "include_global_service_events": true,
+                "is_multi_region_trail": true,
+                "is_organization_trail": false,
+                "kms_key_id": null,
+                "name": "cloudtrail",
+                "s3_bucket_name": "my-company-cloudtrail-logs",
+                "s3_key_prefix": "cloudtrail",
+                "sns_topic_name": null,
+                "tags": {
+                  "Automation": "Terraform"
+                }
+              }
+            },
+            {
+              "address": "module.aws_cloudtrail.aws_cloudwatch_log_group.cloudtrail",
+              "mode": "managed",
+              "type": "aws_cloudwatch_log_group",
+              "name": "cloudtrail",
+              "provider_name": "aws",
+              "schema_version": 0,
+              "values": {
+                "kms_key_id": null,
+                "name": "cloudtrail-events",
+                "name_prefix": null,
+                "retention_in_days": 90,
+                "tags": {
+                  "Automation": "Terraform"
+                }
+              }
+            },
+            {
+              "address": "module.aws_cloudtrail.aws_iam_policy.cloudtrail_cloudwatch_logs",
+              "mode": "managed",
+              "type": "aws_iam_policy",
+              "name": "cloudtrail_cloudwatch_logs",
+              "provider_name": "aws",
+              "schema_version": 0,
+              "values": {
+                "description": null,
+                "name": "cloudtrail-cloudwatch-logs-policy",
+                "name_prefix": null,
+                "path": "/",
+                "policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"WriteCloudWatchLogs\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"logs:PutLogEvents\",\n        \"logs:CreateLogStream\"\n      ],\n      \"Resource\": \"arn:aws:logs:eu-west-1:900665556514:log-group:cloudtrail-events:*\"\n    }\n  ]\n}"
+              }
+            },
+            {
+              "address": "module.aws_cloudtrail.aws_iam_policy_attachment.main",
+              "mode": "managed",
+              "type": "aws_iam_policy_attachment",
+              "name": "main",
+              "provider_name": "aws",
+              "schema_version": 0,
+              "values": {
+                "groups": null,
+                "name": "cloudtrail-cloudwatch-logs-policy-attachment",
+                "roles": [
+                  "cloudtrail-cloudwatch-logs-role"
+                ],
+                "users": null
+              }
+            },
+            {
+              "address": "module.aws_cloudtrail.aws_iam_role.cloudtrail_cloudwatch_role",
+              "mode": "managed",
+              "type": "aws_iam_role",
+              "name": "cloudtrail_cloudwatch_role",
+              "provider_name": "aws",
+              "schema_version": 0,
+              "values": {
+                "assume_role_policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"cloudtrail.amazonaws.com\"\n      }\n    }\n  ]\n}",
+                "description": null,
+                "force_detach_policies": false,
+                "max_session_duration": 3600,
+                "name": "cloudtrail-cloudwatch-logs-role",
+                "name_prefix": null,
+                "path": "/",
+                "permissions_boundary": null,
+                "tags": null
+              }
+            }
+          ],
+          "address": "module.aws_cloudtrail"
+        }
+      ]
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "module.aws_cloudtrail.aws_cloudtrail.main",
+      "module_address": "module.aws_cloudtrail",
+      "mode": "managed",
+      "type": "aws_cloudtrail",
+      "name": "main",
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "enable_log_file_validation": true,
+          "enable_logging": true,
+          "event_selector": [],
+          "include_global_service_events": true,
+          "is_multi_region_trail": true,
+          "is_organization_trail": false,
+          "kms_key_id": null,
+          "name": "cloudtrail",
+          "s3_bucket_name": "my-company-cloudtrail-logs",
+          "s3_key_prefix": "cloudtrail",
+          "sns_topic_name": null,
+          "tags": {
+            "Automation": "Terraform"
+          }
+        },
+        "after_unknown": {
+          "arn": true,
+          "cloud_watch_logs_group_arn": true,
+          "cloud_watch_logs_role_arn": true,
+          "event_selector": [],
+          "home_region": true,
+          "id": true,
+          "tags": {}
+        }
+      }
+    },
+    {
+      "address": "module.aws_cloudtrail.aws_cloudwatch_log_group.cloudtrail",
+      "module_address": "module.aws_cloudtrail",
+      "mode": "managed",
+      "type": "aws_cloudwatch_log_group",
+      "name": "cloudtrail",
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "kms_key_id": null,
+          "name": "cloudtrail-events",
+          "name_prefix": null,
+          "retention_in_days": 90,
+          "tags": {
+            "Automation": "Terraform"
+          }
+        },
+        "after_unknown": {
+          "arn": true,
+          "id": true,
+          "tags": {}
+        }
+      }
+    },
+    {
+      "address": "module.aws_cloudtrail.aws_iam_policy.cloudtrail_cloudwatch_logs",
+      "module_address": "module.aws_cloudtrail",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "cloudtrail_cloudwatch_logs",
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "description": null,
+          "name": "cloudtrail-cloudwatch-logs-policy",
+          "name_prefix": null,
+          "path": "/",
+          "policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"WriteCloudWatchLogs\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"logs:PutLogEvents\",\n        \"logs:CreateLogStream\"\n      ],\n      \"Resource\": \"arn:aws:logs:eu-west-1:900665556514:log-group:cloudtrail-events:*\"\n    }\n  ]\n}"
+        },
+        "after_unknown": {
+          "arn": true,
+          "id": true
+        }
+      }
+    },
+    {
+      "address": "module.aws_cloudtrail.aws_iam_policy_attachment.main",
+      "module_address": "module.aws_cloudtrail",
+      "mode": "managed",
+      "type": "aws_iam_policy_attachment",
+      "name": "main",
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "groups": null,
+          "name": "cloudtrail-cloudwatch-logs-policy-attachment",
+          "roles": [
+            "cloudtrail-cloudwatch-logs-role"
+          ],
+          "users": null
+        },
+        "after_unknown": {
+          "id": true,
+          "policy_arn": true,
+          "roles": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "address": "module.aws_cloudtrail.aws_iam_role.cloudtrail_cloudwatch_role",
+      "module_address": "module.aws_cloudtrail",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "cloudtrail_cloudwatch_role",
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "assume_role_policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"cloudtrail.amazonaws.com\"\n      }\n    }\n  ]\n}",
+          "description": null,
+          "force_detach_policies": false,
+          "max_session_duration": 3600,
+          "name": "cloudtrail-cloudwatch-logs-role",
+          "name_prefix": null,
+          "path": "/",
+          "permissions_boundary": null,
+          "tags": null
+        },
+        "after_unknown": {
+          "arn": true,
+          "create_date": true,
+          "id": true,
+          "unique_id": true
+        }
+      }
+    }
+  ],
+  "prior_state": {
+    "format_version": "0.1",
+    "terraform_version": "0.12.26",
+    "values": {
+      "root_module": {
+        "child_modules": [
+          {
+            "resources": [
+              {
+                "address": "data.aws_caller_identity.current",
+                "mode": "data",
+                "type": "aws_caller_identity",
+                "name": "current",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "account_id": "900665556514",
+                  "arn": "arn:aws:iam::900665556514:user/slalom_test",
+                  "id": "2020-06-03 12:48:49.073481 +0000 UTC",
+                  "user_id": "AIDA5DM6ZXYRCMM7WIJAL"
+                }
+              },
+              {
+                "address": "data.aws_iam_policy_document.cloudtrail_assume_role",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "cloudtrail_assume_role",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "id": "3361274866",
+                  "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"cloudtrail.amazonaws.com\"\n      }\n    }\n  ]\n}",
+                  "override_json": null,
+                  "policy_id": null,
+                  "source_json": null,
+                  "statement": [
+                    {
+                      "actions": [
+                        "sts:AssumeRole"
+                      ],
+                      "condition": [],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [
+                        {
+                          "identifiers": [
+                            "cloudtrail.amazonaws.com"
+                          ],
+                          "type": "Service"
+                        }
+                      ],
+                      "resources": [],
+                      "sid": ""
+                    }
+                  ],
+                  "version": "2012-10-17"
+                }
+              },
+              {
+                "address": "data.aws_iam_policy_document.cloudtrail_cloudwatch_logs",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "cloudtrail_cloudwatch_logs",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "id": "1803938270",
+                  "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"WriteCloudWatchLogs\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"logs:PutLogEvents\",\n        \"logs:CreateLogStream\"\n      ],\n      \"Resource\": \"arn:aws:logs:eu-west-1:900665556514:log-group:cloudtrail-events:*\"\n    }\n  ]\n}",
+                  "override_json": null,
+                  "policy_id": null,
+                  "source_json": null,
+                  "statement": [
+                    {
+                      "actions": [
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents"
+                      ],
+                      "condition": [],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [],
+                      "resources": [
+                        "arn:aws:logs:eu-west-1:900665556514:log-group:cloudtrail-events:*"
+                      ],
+                      "sid": "WriteCloudWatchLogs"
+                    }
+                  ],
+                  "version": "2012-10-17"
+                }
+              },
+              {
+                "address": "data.aws_iam_policy_document.cloudtrail_kms_policy_doc",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "cloudtrail_kms_policy_doc",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "id": "3279499329",
+                  "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"Enable IAM User Permissions\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"kms:*\",\n      \"Resource\": \"*\",\n      \"Principal\": {\n        \"AWS\": \"arn:aws:iam::900665556514:root\"\n      }\n    },\n    {\n      \"Sid\": \"Allow CloudTrail to encrypt logs\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"kms:GenerateDataKey*\",\n      \"Resource\": \"*\",\n      \"Principal\": {\n        \"Service\": \"cloudtrail.amazonaws.com\"\n      },\n      \"Condition\": {\n        \"StringLike\": {\n          \"kms:EncryptionContext:aws:cloudtrail:arn\": \"arn:aws:cloudtrail:*:900665556514:trail/*\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"Allow CloudTrail to describe key\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"kms:DescribeKey\",\n      \"Resource\": \"*\",\n      \"Principal\": {\n        \"Service\": \"cloudtrail.amazonaws.com\"\n      }\n    },\n    {\n      \"Sid\": \"Allow principals in the account to decrypt log files\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"kms:ReEncryptFrom\",\n        \"kms:Decrypt\"\n      ],\n      \"Resource\": \"*\",\n      \"Principal\": {\n        \"AWS\": \"*\"\n      },\n      \"Condition\": {\n        \"StringEquals\": {\n          \"kms:CallerAccount\": \"900665556514\"\n        },\n        \"StringLike\": {\n          \"kms:EncryptionContext:aws:cloudtrail:arn\": \"arn:aws:cloudtrail:*:900665556514:trail/*\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"Allow alias creation during setup\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"kms:CreateAlias\",\n      \"Resource\": \"*\",\n      \"Principal\": {\n        \"AWS\": \"*\"\n      },\n      \"Condition\": {\n        \"StringEquals\": {\n          \"kms:CallerAccount\": \"900665556514\",\n          \"kms:ViaService\": \"ec2.eu-west-1.amazonaws.com\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"Enable cross account log decryption\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"kms:ReEncryptFrom\",\n        \"kms:Decrypt\"\n      ],\n      \"Resource\": \"*\",\n      \"Principal\": {\n        \"AWS\": \"*\"\n      },\n      \"Condition\": {\n        \"StringEquals\": {\n          \"kms:CallerAccount\": \"900665556514\"\n        },\n        \"StringLike\": {\n          \"kms:EncryptionContext:aws:cloudtrail:arn\": \"arn:aws:cloudtrail:*:900665556514:trail/*\"\n        }\n      }\n    }\n  ]\n}",
+                  "override_json": null,
+                  "policy_id": null,
+                  "source_json": null,
+                  "statement": [
+                    {
+                      "actions": [
+                        "kms:*"
+                      ],
+                      "condition": [],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [
+                        {
+                          "identifiers": [
+                            "arn:aws:iam::900665556514:root"
+                          ],
+                          "type": "AWS"
+                        }
+                      ],
+                      "resources": [
+                        "*"
+                      ],
+                      "sid": "Enable IAM User Permissions"
+                    },
+                    {
+                      "actions": [
+                        "kms:GenerateDataKey*"
+                      ],
+                      "condition": [
+                        {
+                          "test": "StringLike",
+                          "values": [
+                            "arn:aws:cloudtrail:*:900665556514:trail/*"
+                          ],
+                          "variable": "kms:EncryptionContext:aws:cloudtrail:arn"
+                        }
+                      ],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [
+                        {
+                          "identifiers": [
+                            "cloudtrail.amazonaws.com"
+                          ],
+                          "type": "Service"
+                        }
+                      ],
+                      "resources": [
+                        "*"
+                      ],
+                      "sid": "Allow CloudTrail to encrypt logs"
+                    },
+                    {
+                      "actions": [
+                        "kms:DescribeKey"
+                      ],
+                      "condition": [],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [
+                        {
+                          "identifiers": [
+                            "cloudtrail.amazonaws.com"
+                          ],
+                          "type": "Service"
+                        }
+                      ],
+                      "resources": [
+                        "*"
+                      ],
+                      "sid": "Allow CloudTrail to describe key"
+                    },
+                    {
+                      "actions": [
+                        "kms:Decrypt",
+                        "kms:ReEncryptFrom"
+                      ],
+                      "condition": [
+                        {
+                          "test": "StringEquals",
+                          "values": [
+                            "900665556514"
+                          ],
+                          "variable": "kms:CallerAccount"
+                        },
+                        {
+                          "test": "StringLike",
+                          "values": [
+                            "arn:aws:cloudtrail:*:900665556514:trail/*"
+                          ],
+                          "variable": "kms:EncryptionContext:aws:cloudtrail:arn"
+                        }
+                      ],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [
+                        {
+                          "identifiers": [
+                            "*"
+                          ],
+                          "type": "AWS"
+                        }
+                      ],
+                      "resources": [
+                        "*"
+                      ],
+                      "sid": "Allow principals in the account to decrypt log files"
+                    },
+                    {
+                      "actions": [
+                        "kms:CreateAlias"
+                      ],
+                      "condition": [
+                        {
+                          "test": "StringEquals",
+                          "values": [
+                            "900665556514"
+                          ],
+                          "variable": "kms:CallerAccount"
+                        },
+                        {
+                          "test": "StringEquals",
+                          "values": [
+                            "ec2.eu-west-1.amazonaws.com"
+                          ],
+                          "variable": "kms:ViaService"
+                        }
+                      ],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [
+                        {
+                          "identifiers": [
+                            "*"
+                          ],
+                          "type": "AWS"
+                        }
+                      ],
+                      "resources": [
+                        "*"
+                      ],
+                      "sid": "Allow alias creation during setup"
+                    },
+                    {
+                      "actions": [
+                        "kms:Decrypt",
+                        "kms:ReEncryptFrom"
+                      ],
+                      "condition": [
+                        {
+                          "test": "StringEquals",
+                          "values": [
+                            "900665556514"
+                          ],
+                          "variable": "kms:CallerAccount"
+                        },
+                        {
+                          "test": "StringLike",
+                          "values": [
+                            "arn:aws:cloudtrail:*:900665556514:trail/*"
+                          ],
+                          "variable": "kms:EncryptionContext:aws:cloudtrail:arn"
+                        }
+                      ],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [
+                        {
+                          "identifiers": [
+                            "*"
+                          ],
+                          "type": "AWS"
+                        }
+                      ],
+                      "resources": [
+                        "*"
+                      ],
+                      "sid": "Enable cross account log decryption"
+                    }
+                  ],
+                  "version": "2012-10-17"
+                }
+              },
+              {
+                "address": "data.aws_partition.current",
+                "mode": "data",
+                "type": "aws_partition",
+                "name": "current",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "dns_suffix": "amazonaws.com",
+                  "id": "2020-06-03 12:48:48.752974 +0000 UTC",
+                  "partition": "aws"
+                }
+              },
+              {
+                "address": "data.aws_region.current",
+                "mode": "data",
+                "type": "aws_region",
+                "name": "current",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "current": null,
+                  "description": "Europe (Ireland)",
+                  "endpoint": "ec2.eu-west-1.amazonaws.com",
+                  "id": "eu-west-1",
+                  "name": "eu-west-1"
+                }
+              }
+            ],
+            "address": "module.aws_cloudtrail"
+          }
+        ]
+      }
+    }
+  },
+  "configuration": {
+    "provider_config": {
+      "aws": {
+        "name": "aws",
+        "version_constraint": "~> 2.0",
+        "expressions": {
+          "region": {
+            "constant_value": "eu-west-1"
+          }
+        }
+      }
+    },
+    "root_module": {
+      "module_calls": {
+        "aws_cloudtrail": {
+          "source": "./terraform-aws-cloudtrail",
+          "expressions": {
+            "log_retention_days": {
+              "constant_value": 90
+            },
+            "s3_bucket_name": {
+              "constant_value": "my-company-cloudtrail-logs"
+            }
+          },
+          "module": {
+            "outputs": {
+              "cloudtrail_arn": {
+                "expression": {
+                  "references": [
+                    "aws_cloudtrail.main"
+                  ]
+                },
+                "description": "CloudTrail ARN"
+              },
+              "cloudtrail_home_region": {
+                "expression": {
+                  "references": [
+                    "aws_cloudtrail.main"
+                  ]
+                },
+                "description": "CloudTrail Home Region"
+              },
+              "cloudtrail_id": {
+                "expression": {
+                  "references": [
+                    "aws_cloudtrail.main"
+                  ]
+                },
+                "description": "CloudTrail ID"
+              }
+            },
+            "resources": [
+              {
+                "address": "aws_cloudtrail.main",
+                "mode": "managed",
+                "type": "aws_cloudtrail",
+                "name": "main",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "cloud_watch_logs_group_arn": {
+                    "references": [
+                      "aws_cloudwatch_log_group.cloudtrail"
+                    ]
+                  },
+                  "cloud_watch_logs_role_arn": {
+                    "references": [
+                      "aws_iam_role.cloudtrail_cloudwatch_role"
+                    ]
+                  },
+                  "enable_log_file_validation": {
+                    "constant_value": true
+                  },
+                  "enable_logging": {
+                    "references": [
+                      "var.enabled"
+                    ]
+                  },
+                  "is_multi_region_trail": {
+                    "constant_value": true
+                  },
+                  "is_organization_trail": {
+                    "references": [
+                      "var.org_trail"
+                    ]
+                  },
+                  "kms_key_id": {
+                    "references": [
+                      "var.encrypt_cloudtrail",
+                      "aws_kms_key.cloudtrail[0]"
+                    ]
+                  },
+                  "name": {
+                    "references": [
+                      "var.trail_name"
+                    ]
+                  },
+                  "s3_bucket_name": {
+                    "references": [
+                      "var.s3_bucket_name"
+                    ]
+                  },
+                  "s3_key_prefix": {
+                    "references": [
+                      "var.s3_key_prefix"
+                    ]
+                  },
+                  "tags": {
+                    "constant_value": {
+                      "Automation": "Terraform"
+                    }
+                  }
+                },
+                "schema_version": 0,
+                "depends_on": [
+                  "aws_kms_key.cloudtrail",
+                  "aws_kms_alias.cloudtrail"
+                ]
+              },
+              {
+                "address": "aws_cloudwatch_log_group.cloudtrail",
+                "mode": "managed",
+                "type": "aws_cloudwatch_log_group",
+                "name": "cloudtrail",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "name": {
+                    "references": [
+                      "var.cloudwatch_log_group_name"
+                    ]
+                  },
+                  "retention_in_days": {
+                    "references": [
+                      "var.log_retention_days"
+                    ]
+                  },
+                  "tags": {
+                    "constant_value": {
+                      "Automation": "Terraform"
+                    }
+                  }
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "aws_iam_policy.cloudtrail_cloudwatch_logs",
+                "mode": "managed",
+                "type": "aws_iam_policy",
+                "name": "cloudtrail_cloudwatch_logs",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "name": {
+                    "constant_value": "cloudtrail-cloudwatch-logs-policy"
+                  },
+                  "policy": {
+                    "references": [
+                      "data.aws_iam_policy_document.cloudtrail_cloudwatch_logs"
+                    ]
+                  }
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "aws_iam_policy_attachment.main",
+                "mode": "managed",
+                "type": "aws_iam_policy_attachment",
+                "name": "main",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "name": {
+                    "constant_value": "cloudtrail-cloudwatch-logs-policy-attachment"
+                  },
+                  "policy_arn": {
+                    "references": [
+                      "aws_iam_policy.cloudtrail_cloudwatch_logs"
+                    ]
+                  },
+                  "roles": {
+                    "references": [
+                      "aws_iam_role.cloudtrail_cloudwatch_role"
+                    ]
+                  }
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "aws_iam_role.cloudtrail_cloudwatch_role",
+                "mode": "managed",
+                "type": "aws_iam_role",
+                "name": "cloudtrail_cloudwatch_role",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "assume_role_policy": {
+                    "references": [
+                      "data.aws_iam_policy_document.cloudtrail_assume_role"
+                    ]
+                  },
+                  "name": {
+                    "constant_value": "cloudtrail-cloudwatch-logs-role"
+                  }
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "aws_kms_alias.cloudtrail",
+                "mode": "managed",
+                "type": "aws_kms_alias",
+                "name": "cloudtrail",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "name": {
+                    "references": [
+                      "var.trail_name"
+                    ]
+                  },
+                  "target_key_id": {
+                    "references": [
+                      "aws_kms_key.cloudtrail[0]"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.encrypt_cloudtrail"
+                  ]
+                }
+              },
+              {
+                "address": "aws_kms_key.cloudtrail",
+                "mode": "managed",
+                "type": "aws_kms_key",
+                "name": "cloudtrail",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "deletion_window_in_days": {
+                    "references": [
+                      "var.key_deletion_window_in_days"
+                    ]
+                  },
+                  "description": {
+                    "constant_value": "A KMS key used to encrypt CloudTrail log files stored in S3."
+                  },
+                  "enable_key_rotation": {
+                    "constant_value": "true"
+                  },
+                  "policy": {
+                    "references": [
+                      "data.aws_iam_policy_document.cloudtrail_kms_policy_doc"
+                    ]
+                  },
+                  "tags": {
+                    "constant_value": {
+                      "Automation": "Terraform"
+                    }
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.encrypt_cloudtrail"
+                  ]
+                }
+              },
+              {
+                "address": "data.aws_caller_identity.current",
+                "mode": "data",
+                "type": "aws_caller_identity",
+                "name": "current",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "schema_version": 0
+              },
+              {
+                "address": "data.aws_iam_policy_document.cloudtrail_assume_role",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "cloudtrail_assume_role",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "statement": [
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "sts:AssumeRole"
+                        ]
+                      },
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "principals": [
+                        {
+                          "identifiers": {
+                            "constant_value": [
+                              "cloudtrail.amazonaws.com"
+                            ]
+                          },
+                          "type": {
+                            "constant_value": "Service"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "data.aws_iam_policy_document.cloudtrail_cloudwatch_logs",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "cloudtrail_cloudwatch_logs",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "statement": [
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "logs:CreateLogStream",
+                          "logs:PutLogEvents"
+                        ]
+                      },
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "resources": {
+                        "references": [
+                          "data.aws_partition.current",
+                          "data.aws_region.current",
+                          "data.aws_caller_identity.current",
+                          "var.cloudwatch_log_group_name"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": "WriteCloudWatchLogs"
+                      }
+                    }
+                  ]
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "data.aws_iam_policy_document.cloudtrail_kms_policy_doc",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "cloudtrail_kms_policy_doc",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "expressions": {
+                  "statement": [
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "kms:*"
+                        ]
+                      },
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "principals": [
+                        {
+                          "identifiers": {
+                            "references": [
+                              "data.aws_partition.current",
+                              "data.aws_caller_identity.current"
+                            ]
+                          },
+                          "type": {
+                            "constant_value": "AWS"
+                          }
+                        }
+                      ],
+                      "resources": {
+                        "constant_value": [
+                          "*"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": "Enable IAM User Permissions"
+                      }
+                    },
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "kms:GenerateDataKey*"
+                        ]
+                      },
+                      "condition": [
+                        {
+                          "test": {
+                            "constant_value": "StringLike"
+                          },
+                          "values": {
+                            "references": [
+                              "data.aws_partition.current",
+                              "data.aws_caller_identity.current"
+                            ]
+                          },
+                          "variable": {
+                            "constant_value": "kms:EncryptionContext:aws:cloudtrail:arn"
+                          }
+                        }
+                      ],
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "principals": [
+                        {
+                          "identifiers": {
+                            "constant_value": [
+                              "cloudtrail.amazonaws.com"
+                            ]
+                          },
+                          "type": {
+                            "constant_value": "Service"
+                          }
+                        }
+                      ],
+                      "resources": {
+                        "constant_value": [
+                          "*"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": "Allow CloudTrail to encrypt logs"
+                      }
+                    },
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "kms:DescribeKey"
+                        ]
+                      },
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "principals": [
+                        {
+                          "identifiers": {
+                            "constant_value": [
+                              "cloudtrail.amazonaws.com"
+                            ]
+                          },
+                          "type": {
+                            "constant_value": "Service"
+                          }
+                        }
+                      ],
+                      "resources": {
+                        "constant_value": [
+                          "*"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": "Allow CloudTrail to describe key"
+                      }
+                    },
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "kms:Decrypt",
+                          "kms:ReEncryptFrom"
+                        ]
+                      },
+                      "condition": [
+                        {
+                          "test": {
+                            "constant_value": "StringEquals"
+                          },
+                          "values": {
+                            "references": [
+                              "data.aws_caller_identity.current"
+                            ]
+                          },
+                          "variable": {
+                            "constant_value": "kms:CallerAccount"
+                          }
+                        },
+                        {
+                          "test": {
+                            "constant_value": "StringLike"
+                          },
+                          "values": {
+                            "references": [
+                              "data.aws_partition.current",
+                              "data.aws_caller_identity.current"
+                            ]
+                          },
+                          "variable": {
+                            "constant_value": "kms:EncryptionContext:aws:cloudtrail:arn"
+                          }
+                        }
+                      ],
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "principals": [
+                        {
+                          "identifiers": {
+                            "constant_value": [
+                              "*"
+                            ]
+                          },
+                          "type": {
+                            "constant_value": "AWS"
+                          }
+                        }
+                      ],
+                      "resources": {
+                        "constant_value": [
+                          "*"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": "Allow principals in the account to decrypt log files"
+                      }
+                    },
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "kms:CreateAlias"
+                        ]
+                      },
+                      "condition": [
+                        {
+                          "test": {
+                            "constant_value": "StringEquals"
+                          },
+                          "values": {
+                            "references": [
+                              "data.aws_region.current"
+                            ]
+                          },
+                          "variable": {
+                            "constant_value": "kms:ViaService"
+                          }
+                        },
+                        {
+                          "test": {
+                            "constant_value": "StringEquals"
+                          },
+                          "values": {
+                            "references": [
+                              "data.aws_caller_identity.current"
+                            ]
+                          },
+                          "variable": {
+                            "constant_value": "kms:CallerAccount"
+                          }
+                        }
+                      ],
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "principals": [
+                        {
+                          "identifiers": {
+                            "constant_value": [
+                              "*"
+                            ]
+                          },
+                          "type": {
+                            "constant_value": "AWS"
+                          }
+                        }
+                      ],
+                      "resources": {
+                        "constant_value": [
+                          "*"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": "Allow alias creation during setup"
+                      }
+                    },
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "kms:Decrypt",
+                          "kms:ReEncryptFrom"
+                        ]
+                      },
+                      "condition": [
+                        {
+                          "test": {
+                            "constant_value": "StringEquals"
+                          },
+                          "values": {
+                            "references": [
+                              "data.aws_caller_identity.current"
+                            ]
+                          },
+                          "variable": {
+                            "constant_value": "kms:CallerAccount"
+                          }
+                        },
+                        {
+                          "test": {
+                            "constant_value": "StringLike"
+                          },
+                          "values": {
+                            "references": [
+                              "data.aws_partition.current",
+                              "data.aws_caller_identity.current"
+                            ]
+                          },
+                          "variable": {
+                            "constant_value": "kms:EncryptionContext:aws:cloudtrail:arn"
+                          }
+                        }
+                      ],
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "principals": [
+                        {
+                          "identifiers": {
+                            "constant_value": [
+                              "*"
+                            ]
+                          },
+                          "type": {
+                            "constant_value": "AWS"
+                          }
+                        }
+                      ],
+                      "resources": {
+                        "constant_value": [
+                          "*"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": "Enable cross account log decryption"
+                      }
+                    }
+                  ]
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "data.aws_partition.current",
+                "mode": "data",
+                "type": "aws_partition",
+                "name": "current",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "schema_version": 0
+              },
+              {
+                "address": "data.aws_region.current",
+                "mode": "data",
+                "type": "aws_region",
+                "name": "current",
+                "provider_config_key": "aws_cloudtrail:aws",
+                "schema_version": 0
+              }
+            ],
+            "variables": {
+              "cloudwatch_log_group_name": {
+                "default": "cloudtrail-events",
+                "description": "The name of the CloudWatch Log Group that receives CloudTrail events."
+              },
+              "enabled": {
+                "default": true,
+                "description": "Enables logging for the trail. Defaults to true. Setting this to false will pause logging."
+              },
+              "encrypt_cloudtrail": {
+                "default": "false",
+                "description": "Whether or not to use a custom KMS key to encrypt CloudTrail logs."
+              },
+              "key_deletion_window_in_days": {
+                "default": "30",
+                "description": "Duration in days after which the key is deleted after destruction of the resource, must be 7-30 days.  Default 30 days."
+              },
+              "log_retention_days": {
+                "default": "90",
+                "description": "Number of days to keep AWS logs around in specific log group."
+              },
+              "org_trail": {
+                "default": "false",
+                "description": "Whether or not this is an organization trail. Only valid in master account."
+              },
+              "s3_bucket_name": {
+                "description": "The name of the AWS S3 bucket."
+              },
+              "s3_key_prefix": {
+                "default": "cloudtrail",
+                "description": "S3 key prefix for CloudTrail logs"
+              },
+              "trail_name": {
+                "default": "cloudtrail",
+                "description": "Name for the Cloudtrail"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

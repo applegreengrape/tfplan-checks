@@ -1,0 +1,1519 @@
+{
+  "format_version": "0.1",
+  "terraform_version": "0.12.26",
+  "planned_values": {
+    "root_module": {
+      "child_modules": [
+        {
+          "resources": [
+            {
+              "address": "module.build.aws_codebuild_project.default[0]",
+              "mode": "managed",
+              "type": "aws_codebuild_project",
+              "name": "default",
+              "index": 0,
+              "provider_name": "aws",
+              "schema_version": 0,
+              "values": {
+                "artifacts": [
+                  {
+                    "artifact_identifier": null,
+                    "encryption_disabled": false,
+                    "location": null,
+                    "name": null,
+                    "namespace_type": null,
+                    "override_artifact_name": false,
+                    "packaging": null,
+                    "path": null,
+                    "type": "CODEPIPELINE"
+                  }
+                ],
+                "badge_enabled": false,
+                "build_timeout": 60,
+                "cache": [
+                  {
+                    "location": null,
+                    "modes": null,
+                    "type": "NO_CACHE"
+                  }
+                ],
+                "environment": [
+                  {
+                    "certificate": null,
+                    "compute_type": "BUILD_GENERAL1_SMALL",
+                    "environment_variable": [
+                      {
+                        "name": "AWS_REGION",
+                        "type": "PLAINTEXT",
+                        "value": "us-east-1"
+                      },
+                      {
+                        "name": "AWS_ACCESS_KEY_ID",
+                        "type": "PLAINTEXT",
+                        "value": "xxxxxxxxxx"
+                      },
+                      {
+                        "name": "IMAGE_REPO_NAME",
+                        "type": "PLAINTEXT",
+                        "value": "ecr-repo-name"
+                      },
+                      {
+                        "name": "IMAGE_TAG",
+                        "type": "PLAINTEXT",
+                        "value": "latest"
+                      },
+                      {
+                        "name": "STAGE",
+                        "type": "PLAINTEXT",
+                        "value": "staging"
+                      },
+                      {
+                        "name": "GITHUB_TOKEN",
+                        "type": "PLAINTEXT",
+                        "value": "UNSET"
+                      },
+                      {
+                        "name": "JENKINS_URL",
+                        "type": "PLAINTEXT",
+                        "value": "https://jenkins.example.com"
+                      },
+                      {
+                        "name": "COMPANY_NAME",
+                        "type": "PLAINTEXT",
+                        "value": "Amazon"
+                      },
+                      {
+                        "name": "TIME_ZONE",
+                        "type": "PLAINTEXT",
+                        "value": "Pacific/Auckland"
+                      }
+                    ],
+                    "image": "aws/codebuild/standard:2.0",
+                    "image_pull_credentials_type": "CODEBUILD",
+                    "privileged_mode": true,
+                    "registry_credential": [],
+                    "type": "LINUX_CONTAINER"
+                  }
+                ],
+                "logs_config": [],
+                "name": "eg-staging-app",
+                "queued_timeout": 480,
+                "secondary_artifacts": [],
+                "secondary_sources": [],
+                "source": [
+                  {
+                    "auth": [],
+                    "buildspec": "",
+                    "git_clone_depth": null,
+                    "git_submodules_config": [],
+                    "insecure_ssl": null,
+                    "location": "",
+                    "report_build_status": false,
+                    "type": "CODEPIPELINE"
+                  }
+                ],
+                "source_version": null,
+                "tags": {
+                  "Name": "eg-staging-app",
+                  "Namespace": "eg",
+                  "Stage": "staging"
+                },
+                "vpc_config": []
+              }
+            },
+            {
+              "address": "module.build.aws_iam_policy.default[0]",
+              "mode": "managed",
+              "type": "aws_iam_policy",
+              "name": "default",
+              "index": 0,
+              "provider_name": "aws",
+              "schema_version": 0,
+              "values": {
+                "description": null,
+                "name": "eg-staging-app",
+                "name_prefix": null,
+                "path": "/service-role/",
+                "policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ssm:GetParameters\",\n        \"logs:PutLogEvents\",\n        \"logs:CreateLogStream\",\n        \"logs:CreateLogGroup\",\n        \"iam:PassRole\",\n        \"ecs:RunTask\",\n        \"ecr:UploadLayerPart\",\n        \"ecr:PutImage\",\n        \"ecr:InitiateLayerUpload\",\n        \"ecr:GetAuthorizationToken\",\n        \"ecr:CompleteLayerUpload\",\n        \"ecr:BatchCheckLayerAvailability\",\n        \"codecommit:GitPull\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}"
+              }
+            },
+            {
+              "address": "module.build.aws_iam_role.default[0]",
+              "mode": "managed",
+              "type": "aws_iam_role",
+              "name": "default",
+              "index": 0,
+              "provider_name": "aws",
+              "schema_version": 0,
+              "values": {
+                "assume_role_policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"codebuild.amazonaws.com\"\n      }\n    }\n  ]\n}",
+                "description": null,
+                "force_detach_policies": false,
+                "max_session_duration": 3600,
+                "name": "eg-staging-app",
+                "name_prefix": null,
+                "path": "/",
+                "permissions_boundary": null,
+                "tags": null
+              }
+            },
+            {
+              "address": "module.build.aws_iam_role_policy_attachment.default[0]",
+              "mode": "managed",
+              "type": "aws_iam_role_policy_attachment",
+              "name": "default",
+              "index": 0,
+              "provider_name": "aws",
+              "schema_version": 0
+            },
+            {
+              "address": "module.build.random_string.bucket_prefix[0]",
+              "mode": "managed",
+              "type": "random_string",
+              "name": "bucket_prefix",
+              "index": 0,
+              "provider_name": "random",
+              "schema_version": 1,
+              "values": {
+                "keepers": null,
+                "length": 12,
+                "lower": true,
+                "min_lower": 0,
+                "min_numeric": 0,
+                "min_special": 0,
+                "min_upper": 0,
+                "number": false,
+                "override_special": null,
+                "special": false,
+                "upper": false
+              }
+            }
+          ],
+          "address": "module.build"
+        }
+      ]
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "module.build.aws_codebuild_project.default[0]",
+      "module_address": "module.build",
+      "mode": "managed",
+      "type": "aws_codebuild_project",
+      "name": "default",
+      "index": 0,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "artifacts": [
+            {
+              "artifact_identifier": null,
+              "encryption_disabled": false,
+              "location": null,
+              "name": null,
+              "namespace_type": null,
+              "override_artifact_name": false,
+              "packaging": null,
+              "path": null,
+              "type": "CODEPIPELINE"
+            }
+          ],
+          "badge_enabled": false,
+          "build_timeout": 60,
+          "cache": [
+            {
+              "location": null,
+              "modes": null,
+              "type": "NO_CACHE"
+            }
+          ],
+          "environment": [
+            {
+              "certificate": null,
+              "compute_type": "BUILD_GENERAL1_SMALL",
+              "environment_variable": [
+                {
+                  "name": "AWS_REGION",
+                  "type": "PLAINTEXT",
+                  "value": "us-east-1"
+                },
+                {
+                  "name": "AWS_ACCOUNT_ID",
+                  "type": "PLAINTEXT",
+                  "value": "xxxxxxxxxx"
+                },
+                {
+                  "name": "IMAGE_REPO_NAME",
+                  "type": "PLAINTEXT",
+                  "value": "ecr-repo-name"
+                },
+                {
+                  "name": "IMAGE_TAG",
+                  "type": "PLAINTEXT",
+                  "value": "latest"
+                },
+                {
+                  "name": "STAGE",
+                  "type": "PLAINTEXT",
+                  "value": "staging"
+                },
+                {
+                  "name": "GITHUB_TOKEN",
+                  "type": "PLAINTEXT",
+                  "value": "UNSET"
+                },
+                {
+                  "name": "JENKINS_URL",
+                  "type": "PLAINTEXT",
+                  "value": "https://jenkins.example.com"
+                },
+                {
+                  "name": "COMPANY_NAME",
+                  "type": "PLAINTEXT",
+                  "value": "Amazon"
+                },
+                {
+                  "name": "TIME_ZONE",
+                  "type": "PLAINTEXT",
+                  "value": "Pacific/Auckland"
+                }
+              ],
+              "image": "aws/codebuild/standard:2.0",
+              "image_pull_credentials_type": "CODEBUILD",
+              "privileged_mode": true,
+              "registry_credential": [],
+              "type": "LINUX_CONTAINER"
+            }
+          ],
+          "logs_config": [],
+          "name": "eg-staging-app",
+          "queued_timeout": 480,
+          "secondary_artifacts": [],
+          "secondary_sources": [],
+          "source": [
+            {
+              "auth": [],
+              "buildspec": "",
+              "git_clone_depth": null,
+              "git_submodules_config": [],
+              "insecure_ssl": null,
+              "location": "",
+              "report_build_status": false,
+              "type": "CODEPIPELINE"
+            }
+          ],
+          "source_version": null,
+          "tags": {
+            "Name": "eg-staging-app",
+            "Namespace": "eg",
+            "Stage": "staging"
+          },
+          "vpc_config": []
+        },
+        "after_unknown": {
+          "arn": true,
+          "artifacts": [
+            {}
+          ],
+          "badge_url": true,
+          "cache": [
+            {}
+          ],
+          "description": true,
+          "encryption_key": true,
+          "environment": [
+            {
+              "environment_variable": [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+              "registry_credential": []
+            }
+          ],
+          "id": true,
+          "logs_config": [],
+          "secondary_artifacts": [],
+          "secondary_sources": [],
+          "service_role": true,
+          "source": [
+            {
+              "auth": [],
+              "git_submodules_config": []
+            }
+          ],
+          "tags": {},
+          "vpc_config": []
+        }
+      }
+    },
+    {
+      "address": "module.build.aws_iam_policy.default[0]",
+      "module_address": "module.build",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "default",
+      "index": 0,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "description": null,
+          "name": "eg-staging-app",
+          "name_prefix": null,
+          "path": "/service-role/",
+          "policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ssm:GetParameters\",\n        \"logs:PutLogEvents\",\n        \"logs:CreateLogStream\",\n        \"logs:CreateLogGroup\",\n        \"iam:PassRole\",\n        \"ecs:RunTask\",\n        \"ecr:UploadLayerPart\",\n        \"ecr:PutImage\",\n        \"ecr:InitiateLayerUpload\",\n        \"ecr:GetAuthorizationToken\",\n        \"ecr:CompleteLayerUpload\",\n        \"ecr:BatchCheckLayerAvailability\",\n        \"codecommit:GitPull\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}"
+        },
+        "after_unknown": {
+          "arn": true,
+          "id": true
+        }
+      }
+    },
+    {
+      "address": "module.build.aws_iam_role.default[0]",
+      "module_address": "module.build",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "default",
+      "index": 0,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "assume_role_policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"codebuild.amazonaws.com\"\n      }\n    }\n  ]\n}",
+          "description": null,
+          "force_detach_policies": false,
+          "max_session_duration": 3600,
+          "name": "eg-staging-app",
+          "name_prefix": null,
+          "path": "/",
+          "permissions_boundary": null,
+          "tags": null
+        },
+        "after_unknown": {
+          "arn": true,
+          "create_date": true,
+          "id": true,
+          "unique_id": true
+        }
+      }
+    },
+    {
+      "address": "module.build.aws_iam_role_policy_attachment.default[0]",
+      "module_address": "module.build",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "default",
+      "index": 0,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {},
+        "after_unknown": {
+          "id": true,
+          "policy_arn": true,
+          "role": true
+        }
+      }
+    },
+    {
+      "address": "module.build.random_string.bucket_prefix[0]",
+      "module_address": "module.build",
+      "mode": "managed",
+      "type": "random_string",
+      "name": "bucket_prefix",
+      "index": 0,
+      "provider_name": "random",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "keepers": null,
+          "length": 12,
+          "lower": true,
+          "min_lower": 0,
+          "min_numeric": 0,
+          "min_special": 0,
+          "min_upper": 0,
+          "number": false,
+          "override_special": null,
+          "special": false,
+          "upper": false
+        },
+        "after_unknown": {
+          "id": true,
+          "result": true
+        }
+      }
+    }
+  ],
+  "prior_state": {
+    "format_version": "0.1",
+    "terraform_version": "0.12.26",
+    "values": {
+      "root_module": {
+        "child_modules": [
+          {
+            "resources": [
+              {
+                "address": "data.aws_caller_identity.default",
+                "mode": "data",
+                "type": "aws_caller_identity",
+                "name": "default",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "account_id": "900665556514",
+                  "arn": "arn:aws:iam::900665556514:user/slalom_test",
+                  "id": "2020-06-03 14:58:36.311853 +0000 UTC",
+                  "user_id": "AIDA5DM6ZXYRCMM7WIJAL"
+                }
+              },
+              {
+                "address": "data.aws_iam_policy_document.permissions",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "permissions",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "id": "3168590664",
+                  "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ssm:GetParameters\",\n        \"logs:PutLogEvents\",\n        \"logs:CreateLogStream\",\n        \"logs:CreateLogGroup\",\n        \"iam:PassRole\",\n        \"ecs:RunTask\",\n        \"ecr:UploadLayerPart\",\n        \"ecr:PutImage\",\n        \"ecr:InitiateLayerUpload\",\n        \"ecr:GetAuthorizationToken\",\n        \"ecr:CompleteLayerUpload\",\n        \"ecr:BatchCheckLayerAvailability\",\n        \"codecommit:GitPull\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+                  "override_json": null,
+                  "policy_id": null,
+                  "source_json": null,
+                  "statement": [
+                    {
+                      "actions": [
+                        "codecommit:GitPull",
+                        "ecr:BatchCheckLayerAvailability",
+                        "ecr:CompleteLayerUpload",
+                        "ecr:GetAuthorizationToken",
+                        "ecr:InitiateLayerUpload",
+                        "ecr:PutImage",
+                        "ecr:UploadLayerPart",
+                        "ecs:RunTask",
+                        "iam:PassRole",
+                        "logs:CreateLogGroup",
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents",
+                        "ssm:GetParameters"
+                      ],
+                      "condition": [],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [],
+                      "resources": [
+                        "*"
+                      ],
+                      "sid": ""
+                    }
+                  ],
+                  "version": "2012-10-17"
+                }
+              },
+              {
+                "address": "data.aws_iam_policy_document.role",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "role",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "id": "442947395",
+                  "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"codebuild.amazonaws.com\"\n      }\n    }\n  ]\n}",
+                  "override_json": null,
+                  "policy_id": null,
+                  "source_json": null,
+                  "statement": [
+                    {
+                      "actions": [
+                        "sts:AssumeRole"
+                      ],
+                      "condition": [],
+                      "effect": "Allow",
+                      "not_actions": [],
+                      "not_principals": [],
+                      "not_resources": [],
+                      "principals": [
+                        {
+                          "identifiers": [
+                            "codebuild.amazonaws.com"
+                          ],
+                          "type": "Service"
+                        }
+                      ],
+                      "resources": [],
+                      "sid": ""
+                    }
+                  ],
+                  "version": "2012-10-17"
+                }
+              },
+              {
+                "address": "data.aws_region.default",
+                "mode": "data",
+                "type": "aws_region",
+                "name": "default",
+                "provider_name": "aws",
+                "schema_version": 0,
+                "values": {
+                  "current": null,
+                  "description": "Europe (Ireland)",
+                  "endpoint": "ec2.eu-west-1.amazonaws.com",
+                  "id": "eu-west-1",
+                  "name": "eu-west-1"
+                }
+              }
+            ],
+            "address": "module.build"
+          }
+        ]
+      }
+    }
+  },
+  "configuration": {
+    "provider_config": {
+      "aws": {
+        "name": "aws",
+        "version_constraint": "~> 2.0",
+        "expressions": {
+          "region": {
+            "constant_value": "eu-west-1"
+          }
+        }
+      }
+    },
+    "root_module": {
+      "module_calls": {
+        "build": {
+          "source": "git::https://github.com/cloudposse/terraform-aws-codebuild.git?ref=master",
+          "expressions": {
+            "aws_account_id": {
+              "constant_value": "xxxxxxxxxx"
+            },
+            "aws_region": {
+              "constant_value": "us-east-1"
+            },
+            "build_compute_type": {
+              "constant_value": "BUILD_GENERAL1_SMALL"
+            },
+            "build_image": {
+              "constant_value": "aws/codebuild/standard:2.0"
+            },
+            "build_timeout": {
+              "constant_value": 60
+            },
+            "environment_variables": {
+              "constant_value": [
+                {
+                  "name": "JENKINS_URL",
+                  "value": "https://jenkins.example.com"
+                },
+                {
+                  "name": "COMPANY_NAME",
+                  "value": "Amazon"
+                },
+                {
+                  "name": "TIME_ZONE",
+                  "value": "Pacific/Auckland"
+                }
+              ]
+            },
+            "image_repo_name": {
+              "constant_value": "ecr-repo-name"
+            },
+            "image_tag": {
+              "constant_value": "latest"
+            },
+            "name": {
+              "constant_value": "app"
+            },
+            "namespace": {
+              "constant_value": "eg"
+            },
+            "privileged_mode": {
+              "constant_value": true
+            },
+            "stage": {
+              "constant_value": "staging"
+            }
+          },
+          "module": {
+            "outputs": {
+              "badge_url": {
+                "expression": {
+                  "references": [
+                    "aws_codebuild_project.default"
+                  ]
+                },
+                "description": "The URL of the build badge when badge_enabled is enabled"
+              },
+              "cache_bucket_arn": {
+                "expression": {
+                  "references": [
+                    "var.enabled",
+                    "local.s3_cache_enabled",
+                    "aws_s3_bucket.cache_bucket"
+                  ]
+                },
+                "description": "Cache S3 bucket ARN"
+              },
+              "cache_bucket_name": {
+                "expression": {
+                  "references": [
+                    "var.enabled",
+                    "local.s3_cache_enabled",
+                    "aws_s3_bucket.cache_bucket"
+                  ]
+                },
+                "description": "Cache S3 bucket name"
+              },
+              "project_id": {
+                "expression": {
+                  "references": [
+                    "aws_codebuild_project.default"
+                  ]
+                },
+                "description": "Project ID"
+              },
+              "project_name": {
+                "expression": {
+                  "references": [
+                    "aws_codebuild_project.default"
+                  ]
+                },
+                "description": "Project name"
+              },
+              "role_arn": {
+                "expression": {
+                  "references": [
+                    "aws_iam_role.default"
+                  ]
+                },
+                "description": "IAM Role ARN"
+              },
+              "role_id": {
+                "expression": {
+                  "references": [
+                    "aws_iam_role.default"
+                  ]
+                },
+                "description": "IAM Role ID"
+              }
+            },
+            "resources": [
+              {
+                "address": "aws_codebuild_project.default",
+                "mode": "managed",
+                "type": "aws_codebuild_project",
+                "name": "default",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "artifacts": [
+                    {
+                      "type": {
+                        "references": [
+                          "var.artifact_type"
+                        ]
+                      }
+                    }
+                  ],
+                  "badge_enabled": {
+                    "references": [
+                      "var.badge_enabled"
+                    ]
+                  },
+                  "build_timeout": {
+                    "references": [
+                      "var.build_timeout"
+                    ]
+                  },
+                  "cache": [
+                    {
+                      "location": {
+                        "references": [
+                          "local.cache"
+                        ]
+                      },
+                      "modes": {
+                        "references": [
+                          "local.cache"
+                        ]
+                      },
+                      "type": {
+                        "references": [
+                          "local.cache"
+                        ]
+                      }
+                    }
+                  ],
+                  "environment": [
+                    {
+                      "compute_type": {
+                        "references": [
+                          "var.build_compute_type"
+                        ]
+                      },
+                      "environment_variable": [
+                        {
+                          "name": {
+                            "constant_value": "AWS_REGION"
+                          },
+                          "value": {
+                            "references": [
+                              "var.aws_region",
+                              "var.aws_region",
+                              "data.aws_region.default"
+                            ]
+                          }
+                        },
+                        {
+                          "name": {
+                            "constant_value": "AWS_ACCOUNT_ID"
+                          },
+                          "value": {
+                            "references": [
+                              "var.aws_account_id",
+                              "var.aws_account_id",
+                              "data.aws_caller_identity.default"
+                            ]
+                          }
+                        },
+                        {
+                          "name": {
+                            "constant_value": "IMAGE_REPO_NAME"
+                          },
+                          "value": {
+                            "references": [
+                              "var.image_repo_name",
+                              "var.image_repo_name"
+                            ]
+                          }
+                        },
+                        {
+                          "name": {
+                            "constant_value": "IMAGE_TAG"
+                          },
+                          "value": {
+                            "references": [
+                              "var.image_tag",
+                              "var.image_tag"
+                            ]
+                          }
+                        },
+                        {
+                          "name": {
+                            "constant_value": "STAGE"
+                          },
+                          "value": {
+                            "references": [
+                              "var.stage",
+                              "var.stage"
+                            ]
+                          }
+                        },
+                        {
+                          "name": {
+                            "constant_value": "GITHUB_TOKEN"
+                          },
+                          "value": {
+                            "references": [
+                              "var.github_token",
+                              "var.github_token"
+                            ]
+                          }
+                        }
+                      ],
+                      "image": {
+                        "references": [
+                          "var.build_image"
+                        ]
+                      },
+                      "privileged_mode": {
+                        "references": [
+                          "var.privileged_mode"
+                        ]
+                      },
+                      "type": {
+                        "constant_value": "LINUX_CONTAINER"
+                      }
+                    }
+                  ],
+                  "name": {
+                    "references": [
+                      "module.label.id"
+                    ]
+                  },
+                  "service_role": {
+                    "references": [
+                      "aws_iam_role.default"
+                    ]
+                  },
+                  "source": [
+                    {
+                      "buildspec": {
+                        "references": [
+                          "var.buildspec"
+                        ]
+                      },
+                      "location": {
+                        "references": [
+                          "var.source_location"
+                        ]
+                      },
+                      "report_build_status": {
+                        "references": [
+                          "var.report_build_status"
+                        ]
+                      },
+                      "type": {
+                        "references": [
+                          "var.source_type"
+                        ]
+                      }
+                    }
+                  ],
+                  "tags": {
+                    "references": [
+                      "module.label.tags"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.enabled"
+                  ]
+                }
+              },
+              {
+                "address": "aws_iam_policy.default",
+                "mode": "managed",
+                "type": "aws_iam_policy",
+                "name": "default",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "name": {
+                    "references": [
+                      "module.label.id"
+                    ]
+                  },
+                  "path": {
+                    "constant_value": "/service-role/"
+                  },
+                  "policy": {
+                    "references": [
+                      "data.aws_iam_policy_document.permissions"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.enabled"
+                  ]
+                }
+              },
+              {
+                "address": "aws_iam_policy.default_cache_bucket",
+                "mode": "managed",
+                "type": "aws_iam_policy",
+                "name": "default_cache_bucket",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "name": {
+                    "references": [
+                      "module.label.id"
+                    ]
+                  },
+                  "path": {
+                    "constant_value": "/service-role/"
+                  },
+                  "policy": {
+                    "references": [
+                      "data.aws_iam_policy_document.permissions_cache_bucket"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.enabled",
+                    "local.s3_cache_enabled"
+                  ]
+                }
+              },
+              {
+                "address": "aws_iam_role.default",
+                "mode": "managed",
+                "type": "aws_iam_role",
+                "name": "default",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "assume_role_policy": {
+                    "references": [
+                      "data.aws_iam_policy_document.role"
+                    ]
+                  },
+                  "name": {
+                    "references": [
+                      "module.label.id"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.enabled"
+                  ]
+                }
+              },
+              {
+                "address": "aws_iam_role_policy_attachment.default",
+                "mode": "managed",
+                "type": "aws_iam_role_policy_attachment",
+                "name": "default",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "policy_arn": {
+                    "references": [
+                      "aws_iam_policy.default"
+                    ]
+                  },
+                  "role": {
+                    "references": [
+                      "aws_iam_role.default"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.enabled"
+                  ]
+                }
+              },
+              {
+                "address": "aws_iam_role_policy_attachment.default_cache_bucket",
+                "mode": "managed",
+                "type": "aws_iam_role_policy_attachment",
+                "name": "default_cache_bucket",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "policy_arn": {
+                    "references": [
+                      "aws_iam_policy.default_cache_bucket"
+                    ]
+                  },
+                  "role": {
+                    "references": [
+                      "aws_iam_role.default"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.enabled",
+                    "local.s3_cache_enabled"
+                  ]
+                }
+              },
+              {
+                "address": "aws_s3_bucket.cache_bucket",
+                "mode": "managed",
+                "type": "aws_s3_bucket",
+                "name": "cache_bucket",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "acl": {
+                    "constant_value": "private"
+                  },
+                  "bucket": {
+                    "references": [
+                      "local.cache_bucket_name_normalised"
+                    ]
+                  },
+                  "force_destroy": {
+                    "constant_value": true
+                  },
+                  "lifecycle_rule": [
+                    {
+                      "enabled": {
+                        "constant_value": true
+                      },
+                      "expiration": [
+                        {
+                          "days": {
+                            "references": [
+                              "var.cache_expiration_days"
+                            ]
+                          }
+                        }
+                      ],
+                      "id": {
+                        "constant_value": "codebuildcache"
+                      },
+                      "prefix": {
+                        "constant_value": "/"
+                      },
+                      "tags": {
+                        "references": [
+                          "module.label.tags"
+                        ]
+                      }
+                    }
+                  ],
+                  "tags": {
+                    "references": [
+                      "module.label.tags"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.enabled",
+                    "local.s3_cache_enabled"
+                  ]
+                }
+              },
+              {
+                "address": "random_string.bucket_prefix",
+                "mode": "managed",
+                "type": "random_string",
+                "name": "bucket_prefix",
+                "provider_config_key": "build:random",
+                "expressions": {
+                  "length": {
+                    "constant_value": 12
+                  },
+                  "lower": {
+                    "constant_value": true
+                  },
+                  "number": {
+                    "constant_value": false
+                  },
+                  "special": {
+                    "constant_value": false
+                  },
+                  "upper": {
+                    "constant_value": false
+                  }
+                },
+                "schema_version": 1,
+                "count_expression": {
+                  "references": [
+                    "var.enabled"
+                  ]
+                }
+              },
+              {
+                "address": "data.aws_caller_identity.default",
+                "mode": "data",
+                "type": "aws_caller_identity",
+                "name": "default",
+                "provider_config_key": "build:aws",
+                "schema_version": 0
+              },
+              {
+                "address": "data.aws_iam_policy_document.permissions",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "permissions",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "statement": [
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "codecommit:GitPull",
+                          "ecr:BatchCheckLayerAvailability",
+                          "ecr:CompleteLayerUpload",
+                          "ecr:GetAuthorizationToken",
+                          "ecr:InitiateLayerUpload",
+                          "ecr:PutImage",
+                          "ecr:UploadLayerPart",
+                          "ecs:RunTask",
+                          "iam:PassRole",
+                          "logs:CreateLogGroup",
+                          "logs:CreateLogStream",
+                          "logs:PutLogEvents",
+                          "ssm:GetParameters"
+                        ]
+                      },
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "resources": {
+                        "constant_value": [
+                          "*"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": ""
+                      }
+                    }
+                  ]
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "data.aws_iam_policy_document.permissions_cache_bucket",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "permissions_cache_bucket",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "statement": [
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "s3:*"
+                        ]
+                      },
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "resources": {
+                        "references": [
+                          "aws_s3_bucket.cache_bucket",
+                          "aws_s3_bucket.cache_bucket"
+                        ]
+                      },
+                      "sid": {
+                        "constant_value": ""
+                      }
+                    }
+                  ]
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.enabled",
+                    "local.s3_cache_enabled"
+                  ]
+                }
+              },
+              {
+                "address": "data.aws_iam_policy_document.role",
+                "mode": "data",
+                "type": "aws_iam_policy_document",
+                "name": "role",
+                "provider_config_key": "build:aws",
+                "expressions": {
+                  "statement": [
+                    {
+                      "actions": {
+                        "constant_value": [
+                          "sts:AssumeRole"
+                        ]
+                      },
+                      "effect": {
+                        "constant_value": "Allow"
+                      },
+                      "principals": [
+                        {
+                          "identifiers": {
+                            "constant_value": [
+                              "codebuild.amazonaws.com"
+                            ]
+                          },
+                          "type": {
+                            "constant_value": "Service"
+                          }
+                        }
+                      ],
+                      "sid": {
+                        "constant_value": ""
+                      }
+                    }
+                  ]
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "data.aws_region.default",
+                "mode": "data",
+                "type": "aws_region",
+                "name": "default",
+                "provider_config_key": "build:aws",
+                "schema_version": 0
+              }
+            ],
+            "module_calls": {
+              "label": {
+                "source": "git::https://github.com/cloudposse/terraform-terraform-label.git?ref=tags/0.4.0",
+                "expressions": {
+                  "attributes": {
+                    "references": [
+                      "var.attributes"
+                    ]
+                  },
+                  "delimiter": {
+                    "references": [
+                      "var.delimiter"
+                    ]
+                  },
+                  "name": {
+                    "references": [
+                      "var.name"
+                    ]
+                  },
+                  "namespace": {
+                    "references": [
+                      "var.namespace"
+                    ]
+                  },
+                  "stage": {
+                    "references": [
+                      "var.stage"
+                    ]
+                  },
+                  "tags": {
+                    "references": [
+                      "var.tags"
+                    ]
+                  }
+                },
+                "module": {
+                  "outputs": {
+                    "attributes": {
+                      "expression": {
+                        "references": [
+                          "local.attributes"
+                        ]
+                      },
+                      "description": "Normalized attributes"
+                    },
+                    "delimiter": {
+                      "expression": {
+                        "references": [
+                          "local.delimiter"
+                        ]
+                      },
+                      "description": "Delimiter between `namespace`, `stage`, `name` and `attributes`"
+                    },
+                    "id": {
+                      "expression": {
+                        "references": [
+                          "local.id"
+                        ]
+                      },
+                      "description": "Disambiguated ID"
+                    },
+                    "name": {
+                      "expression": {
+                        "references": [
+                          "local.name"
+                        ]
+                      },
+                      "description": "Normalized name"
+                    },
+                    "namespace": {
+                      "expression": {
+                        "references": [
+                          "local.namespace"
+                        ]
+                      },
+                      "description": "Normalized namespace"
+                    },
+                    "stage": {
+                      "expression": {
+                        "references": [
+                          "local.stage"
+                        ]
+                      },
+                      "description": "Normalized stage"
+                    },
+                    "tags": {
+                      "expression": {
+                        "references": [
+                          "local.tags"
+                        ]
+                      },
+                      "description": "Normalized Tag map"
+                    }
+                  },
+                  "variables": {
+                    "attributes": {
+                      "default": [],
+                      "description": "Additional attributes (e.g. `1`)"
+                    },
+                    "convert_case": {
+                      "default": true,
+                      "description": "Convert fields to lower case"
+                    },
+                    "delimiter": {
+                      "default": "-",
+                      "description": "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
+                    },
+                    "enabled": {
+                      "default": true,
+                      "description": "Set to false to prevent the module from creating any resources"
+                    },
+                    "name": {
+                      "default": "",
+                      "description": "Solution name, e.g. `app` or `jenkins`"
+                    },
+                    "namespace": {
+                      "default": "",
+                      "description": "Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp'"
+                    },
+                    "stage": {
+                      "default": "",
+                      "description": "Stage, e.g. 'prod', 'staging', 'dev'"
+                    },
+                    "tags": {
+                      "default": {},
+                      "description": "Additional tags (e.g. `map('BusinessUnit','XYZ')`"
+                    }
+                  }
+                }
+              }
+            },
+            "variables": {
+              "artifact_type": {
+                "default": "CODEPIPELINE",
+                "description": "The build output artifact's type. Valid values for this parameter are: CODEPIPELINE, NO_ARTIFACTS or S3"
+              },
+              "attributes": {
+                "default": [],
+                "description": "Additional attributes (e.g. `policy` or `role`)"
+              },
+              "aws_account_id": {
+                "default": "",
+                "description": "(Optional) AWS Account ID. Used as CodeBuild ENV variable when building Docker images. For more info: http://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html"
+              },
+              "aws_region": {
+                "default": "",
+                "description": "(Optional) AWS Region, e.g. us-east-1. Used as CodeBuild ENV variable when building Docker images. For more info: http://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html"
+              },
+              "badge_enabled": {
+                "default": false,
+                "description": "Generates a publicly-accessible URL for the projects build badge. Available as badge_url attribute when enabled"
+              },
+              "build_compute_type": {
+                "default": "BUILD_GENERAL1_SMALL",
+                "description": "Instance type of the build instance"
+              },
+              "build_image": {
+                "default": "aws/codebuild/standard:2.0",
+                "description": "Docker image for build environment, e.g. 'aws/codebuild/standard:2.0' or 'aws/codebuild/eb-nodejs-6.10.0-amazonlinux-64:4.0.0'. For more info: http://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref.html"
+              },
+              "build_timeout": {
+                "default": 60,
+                "description": "How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed"
+              },
+              "buildspec": {
+                "default": "",
+                "description": "Optional buildspec declaration to use for building the project"
+              },
+              "cache_bucket_suffix_enabled": {
+                "default": true,
+                "description": "The cache bucket generates a random 13 character string to generate a unique bucket name. If set to false it uses terraform-null-label's id value. It only works when cache_type is 'S3"
+              },
+              "cache_expiration_days": {
+                "default": 7,
+                "description": "How many days should the build cache be kept. It only works when cache_type is 'S3'"
+              },
+              "cache_type": {
+                "default": "NO_CACHE",
+                "description": "The type of storage that will be used for the AWS CodeBuild project cache. Valid values: NO_CACHE, LOCAL, and S3.  Defaults to NO_CACHE.  If cache_type is S3, it will create an S3 bucket for storing codebuild cache inside"
+              },
+              "delimiter": {
+                "default": "-",
+                "description": "Delimiter to be used between `name`, `namespace`, `stage`, etc."
+              },
+              "enabled": {
+                "default": true,
+                "description": "A boolean to enable/disable resource creation"
+              },
+              "environment_variables": {
+                "default": [
+                  {
+                    "name": "NO_ADDITIONAL_BUILD_VARS",
+                    "value": "TRUE"
+                  }
+                ],
+                "description": "A list of maps, that contain both the key 'name' and the key 'value' to be used as additional environment variables for the build"
+              },
+              "github_token": {
+                "default": "",
+                "description": "(Optional) GitHub auth token environment variable (`GITHUB_TOKEN`)"
+              },
+              "image_repo_name": {
+                "default": "UNSET",
+                "description": "(Optional) ECR repository name to store the Docker image built by this module. Used as CodeBuild ENV variable when building Docker images. For more info: http://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html"
+              },
+              "image_tag": {
+                "default": "latest",
+                "description": "(Optional) Docker image tag in the ECR repository, e.g. 'latest'. Used as CodeBuild ENV variable when building Docker images. For more info: http://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html"
+              },
+              "local_cache_modes": {
+                "default": [],
+                "description": "Specifies settings that AWS CodeBuild uses to store and reuse build dependencies. Valid values: LOCAL_SOURCE_CACHE, LOCAL_DOCKER_LAYER_CACHE, and LOCAL_CUSTOM_CACHE"
+              },
+              "name": {
+                "description": "Solution name, e.g. 'app' or 'jenkins'"
+              },
+              "namespace": {
+                "default": "",
+                "description": "Namespace, which could be your organization name, e.g. 'eg' or 'cp'"
+              },
+              "privileged_mode": {
+                "default": false,
+                "description": "(Optional) If set to true, enables running the Docker daemon inside a Docker container on the CodeBuild instance. Used when building Docker images"
+              },
+              "report_build_status": {
+                "default": false,
+                "description": "Set to true to report the status of a build's start and finish to your source provider. This option is only valid when the source_type is BITBUCKET or GITHUB"
+              },
+              "source_location": {
+                "default": "",
+                "description": "The location of the source code from git or s3"
+              },
+              "source_type": {
+                "default": "CODEPIPELINE",
+                "description": "The type of repository that contains the source code to be built. Valid values for this parameter are: CODECOMMIT, CODEPIPELINE, GITHUB, GITHUB_ENTERPRISE, BITBUCKET or S3"
+              },
+              "stage": {
+                "default": "",
+                "description": "Stage, e.g. 'prod', 'staging', 'dev', or 'test'"
+              },
+              "tags": {
+                "default": {},
+                "description": "Additional tags (e.g. `map('BusinessUnit', 'XYZ')`"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,26 +4,27 @@ package aws
 
 import (
 	"tfplan/checks/aws/cloudtrail"
+	"tfplan/checks/aws/codebuild"
 	"tfplan/checks/aws/s3"
+	"tfplan/checks/aws/ec2"
+	"tfplan/checks/data"
 )
 
 var s string
 var r string
 
-func CloudTrail(typ []interface{}, value []interface{}) (string, string){
+func CloudTrail(typ []interface{}, value []interface{}){
 	//print out advice 
-	s, r:= cloudtrail.CloudTrail_01()
+	//s, r:= cloudtrail.CloudTrail_01()
 
 	for i:= range typ {
 		if typ[i] == "aws_cloudtrail"{
-			s, r:= cloudtrail.CloudTrail_02(value[i])
-			return s,r 
+			cloudtrail.CloudTrail_02(value[i])
+			//return s,r 
 		}
 	}
-	return s,r 
+	//return s,r 
 }
-
-
 
 func S3(typ []interface{}, value []interface{}) (string, string){
 	// !aws_s3_bucket_public_access_block
@@ -34,5 +35,17 @@ func S3(typ []interface{}, value []interface{}) (string, string){
 		}
 	}
 	return s,r 
+}
+
+func CodeBuild(plan data.CodeBuild){
+	// CodeBuild_01
+	codebuild.CodeBuild_01(plan)
+	// CodeBuild_02
+	codebuild.CodeBuild_02(plan)
+}
+
+func EC2(plan data.EC2)  {
+	// [EC2.3] Attached EBS volumes should be encrypted at-rest
+	ec2.EC2_03(plan)	
 }
 

@@ -1,0 +1,1167 @@
+{
+  "format_version": "0.1",
+  "terraform_version": "0.12.26",
+  "planned_values": {
+    "root_module": {
+      "child_modules": [
+        {
+          "resources": [
+            {
+              "address": "module.ec2_cluster.aws_instance.this[0]",
+              "mode": "managed",
+              "type": "aws_instance",
+              "name": "this",
+              "index": 0,
+              "provider_name": "aws",
+              "schema_version": 1,
+              "values": {
+                "ami": "ami-ebd02392",
+                "credit_specification": [
+                  {
+                    "cpu_credits": "standard"
+                  }
+                ],
+                "disable_api_termination": false,
+                "ebs_optimized": false,
+                "get_password_data": false,
+                "hibernation": null,
+                "iam_instance_profile": "",
+                "instance_initiated_shutdown_behavior": "",
+                "instance_type": "t2.micro",
+                "key_name": "user1",
+                "monitoring": true,
+                "source_dest_check": true,
+                "subnet_id": "subnet-eddcdzz4",
+                "tags": {
+                  "Environment": "dev",
+                  "Name": "my-cluster-1",
+                  "Terraform": "true"
+                },
+                "tenancy": "default",
+                "timeouts": null,
+                "user_data": null,
+                "user_data_base64": null,
+                "volume_tags": {
+                  "Name": "my-cluster-1"
+                },
+                "vpc_security_group_ids": [
+                  "sg-12345678"
+                ]
+              }
+            },
+            {
+              "address": "module.ec2_cluster.aws_instance.this[1]",
+              "mode": "managed",
+              "type": "aws_instance",
+              "name": "this",
+              "index": 1,
+              "provider_name": "aws",
+              "schema_version": 1,
+              "values": {
+                "ami": "ami-ebd02392",
+                "credit_specification": [
+                  {
+                    "cpu_credits": "standard"
+                  }
+                ],
+                "disable_api_termination": false,
+                "ebs_optimized": false,
+                "get_password_data": false,
+                "hibernation": null,
+                "iam_instance_profile": "",
+                "instance_initiated_shutdown_behavior": "",
+                "instance_type": "t2.micro",
+                "key_name": "user1",
+                "monitoring": true,
+                "source_dest_check": true,
+                "subnet_id": "subnet-eddcdzz4",
+                "tags": {
+                  "Environment": "dev",
+                  "Name": "my-cluster-2",
+                  "Terraform": "true"
+                },
+                "tenancy": "default",
+                "timeouts": null,
+                "user_data": null,
+                "user_data_base64": null,
+                "volume_tags": {
+                  "Name": "my-cluster-2"
+                },
+                "vpc_security_group_ids": [
+                  "sg-12345678"
+                ]
+              }
+            },
+            {
+              "address": "module.ec2_cluster.aws_instance.this[2]",
+              "mode": "managed",
+              "type": "aws_instance",
+              "name": "this",
+              "index": 2,
+              "provider_name": "aws",
+              "schema_version": 1,
+              "values": {
+                "ami": "ami-ebd02392",
+                "credit_specification": [
+                  {
+                    "cpu_credits": "standard"
+                  }
+                ],
+                "disable_api_termination": false,
+                "ebs_optimized": false,
+                "get_password_data": false,
+                "hibernation": null,
+                "iam_instance_profile": "",
+                "instance_initiated_shutdown_behavior": "",
+                "instance_type": "t2.micro",
+                "key_name": "user1",
+                "monitoring": true,
+                "source_dest_check": true,
+                "subnet_id": "subnet-eddcdzz4",
+                "tags": {
+                  "Environment": "dev",
+                  "Name": "my-cluster-3",
+                  "Terraform": "true"
+                },
+                "tenancy": "default",
+                "timeouts": null,
+                "user_data": null,
+                "user_data_base64": null,
+                "volume_tags": {
+                  "Name": "my-cluster-3"
+                },
+                "vpc_security_group_ids": [
+                  "sg-12345678"
+                ]
+              }
+            },
+            {
+              "address": "module.ec2_cluster.aws_instance.this[3]",
+              "mode": "managed",
+              "type": "aws_instance",
+              "name": "this",
+              "index": 3,
+              "provider_name": "aws",
+              "schema_version": 1,
+              "values": {
+                "ami": "ami-ebd02392",
+                "credit_specification": [
+                  {
+                    "cpu_credits": "standard"
+                  }
+                ],
+                "disable_api_termination": false,
+                "ebs_optimized": false,
+                "get_password_data": false,
+                "hibernation": null,
+                "iam_instance_profile": "",
+                "instance_initiated_shutdown_behavior": "",
+                "instance_type": "t2.micro",
+                "key_name": "user1",
+                "monitoring": true,
+                "source_dest_check": true,
+                "subnet_id": "subnet-eddcdzz4",
+                "tags": {
+                  "Environment": "dev",
+                  "Name": "my-cluster-4",
+                  "Terraform": "true"
+                },
+                "tenancy": "default",
+                "timeouts": null,
+                "user_data": null,
+                "user_data_base64": null,
+                "volume_tags": {
+                  "Name": "my-cluster-4"
+                },
+                "vpc_security_group_ids": [
+                  "sg-12345678"
+                ]
+              }
+            },
+            {
+              "address": "module.ec2_cluster.aws_instance.this[4]",
+              "mode": "managed",
+              "type": "aws_instance",
+              "name": "this",
+              "index": 4,
+              "provider_name": "aws",
+              "schema_version": 1,
+              "values": {
+                "ami": "ami-ebd02392",
+                "credit_specification": [
+                  {
+                    "cpu_credits": "standard"
+                  }
+                ],
+                "disable_api_termination": false,
+                "ebs_optimized": false,
+                "get_password_data": false,
+                "hibernation": null,
+                "iam_instance_profile": "",
+                "instance_initiated_shutdown_behavior": "",
+                "instance_type": "t2.micro",
+                "key_name": "user1",
+                "monitoring": true,
+                "source_dest_check": true,
+                "subnet_id": "subnet-eddcdzz4",
+                "tags": {
+                  "Environment": "dev",
+                  "Name": "my-cluster-5",
+                  "Terraform": "true"
+                },
+                "tenancy": "default",
+                "timeouts": null,
+                "user_data": null,
+                "user_data_base64": null,
+                "volume_tags": {
+                  "Name": "my-cluster-5"
+                },
+                "vpc_security_group_ids": [
+                  "sg-12345678"
+                ]
+              }
+            }
+          ],
+          "address": "module.ec2_cluster"
+        }
+      ]
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "module.ec2_cluster.aws_instance.this[0]",
+      "module_address": "module.ec2_cluster",
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "this",
+      "index": 0,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "ami": "ami-ebd02392",
+          "credit_specification": [
+            {
+              "cpu_credits": "standard"
+            }
+          ],
+          "disable_api_termination": false,
+          "ebs_optimized": false,
+          "get_password_data": false,
+          "hibernation": null,
+          "iam_instance_profile": "",
+          "instance_initiated_shutdown_behavior": "",
+          "instance_type": "t2.micro",
+          "key_name": "user1",
+          "monitoring": true,
+          "source_dest_check": true,
+          "subnet_id": "subnet-eddcdzz4",
+          "tags": {
+            "Environment": "dev",
+            "Name": "my-cluster-1",
+            "Terraform": "true"
+          },
+          "tenancy": "default",
+          "timeouts": null,
+          "user_data": null,
+          "user_data_base64": null,
+          "volume_tags": {
+            "Name": "my-cluster-1"
+          },
+          "vpc_security_group_ids": [
+            "sg-12345678"
+          ]
+        },
+        "after_unknown": {
+          "arn": true,
+          "associate_public_ip_address": true,
+          "availability_zone": true,
+          "cpu_core_count": true,
+          "cpu_threads_per_core": true,
+          "credit_specification": [
+            {}
+          ],
+          "ebs_block_device": true,
+          "ephemeral_block_device": true,
+          "host_id": true,
+          "id": true,
+          "instance_state": true,
+          "ipv6_address_count": true,
+          "ipv6_addresses": true,
+          "metadata_options": true,
+          "network_interface": true,
+          "network_interface_id": true,
+          "outpost_arn": true,
+          "password_data": true,
+          "placement_group": true,
+          "primary_network_interface_id": true,
+          "private_dns": true,
+          "private_ip": true,
+          "public_dns": true,
+          "public_ip": true,
+          "root_block_device": true,
+          "security_groups": true,
+          "tags": {},
+          "volume_tags": {},
+          "vpc_security_group_ids": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "address": "module.ec2_cluster.aws_instance.this[1]",
+      "module_address": "module.ec2_cluster",
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "this",
+      "index": 1,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "ami": "ami-ebd02392",
+          "credit_specification": [
+            {
+              "cpu_credits": "standard"
+            }
+          ],
+          "disable_api_termination": false,
+          "ebs_optimized": false,
+          "get_password_data": false,
+          "hibernation": null,
+          "iam_instance_profile": "",
+          "instance_initiated_shutdown_behavior": "",
+          "instance_type": "t2.micro",
+          "key_name": "user1",
+          "monitoring": true,
+          "source_dest_check": true,
+          "subnet_id": "subnet-eddcdzz4",
+          "tags": {
+            "Environment": "dev",
+            "Name": "my-cluster-2",
+            "Terraform": "true"
+          },
+          "tenancy": "default",
+          "timeouts": null,
+          "user_data": null,
+          "user_data_base64": null,
+          "volume_tags": {
+            "Name": "my-cluster-2"
+          },
+          "vpc_security_group_ids": [
+            "sg-12345678"
+          ]
+        },
+        "after_unknown": {
+          "arn": true,
+          "associate_public_ip_address": true,
+          "availability_zone": true,
+          "cpu_core_count": true,
+          "cpu_threads_per_core": true,
+          "credit_specification": [
+            {}
+          ],
+          "ebs_block_device": true,
+          "ephemeral_block_device": true,
+          "host_id": true,
+          "id": true,
+          "instance_state": true,
+          "ipv6_address_count": true,
+          "ipv6_addresses": true,
+          "metadata_options": true,
+          "network_interface": true,
+          "network_interface_id": true,
+          "outpost_arn": true,
+          "password_data": true,
+          "placement_group": true,
+          "primary_network_interface_id": true,
+          "private_dns": true,
+          "private_ip": true,
+          "public_dns": true,
+          "public_ip": true,
+          "root_block_device": true,
+          "security_groups": true,
+          "tags": {},
+          "volume_tags": {},
+          "vpc_security_group_ids": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "address": "module.ec2_cluster.aws_instance.this[2]",
+      "module_address": "module.ec2_cluster",
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "this",
+      "index": 2,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "ami": "ami-ebd02392",
+          "credit_specification": [
+            {
+              "cpu_credits": "standard"
+            }
+          ],
+          "disable_api_termination": false,
+          "ebs_optimized": false,
+          "get_password_data": false,
+          "hibernation": null,
+          "iam_instance_profile": "",
+          "instance_initiated_shutdown_behavior": "",
+          "instance_type": "t2.micro",
+          "key_name": "user1",
+          "monitoring": true,
+          "source_dest_check": true,
+          "subnet_id": "subnet-eddcdzz4",
+          "tags": {
+            "Environment": "dev",
+            "Name": "my-cluster-3",
+            "Terraform": "true"
+          },
+          "tenancy": "default",
+          "timeouts": null,
+          "user_data": null,
+          "user_data_base64": null,
+          "volume_tags": {
+            "Name": "my-cluster-3"
+          },
+          "vpc_security_group_ids": [
+            "sg-12345678"
+          ]
+        },
+        "after_unknown": {
+          "arn": true,
+          "associate_public_ip_address": true,
+          "availability_zone": true,
+          "cpu_core_count": true,
+          "cpu_threads_per_core": true,
+          "credit_specification": [
+            {}
+          ],
+          "ebs_block_device": true,
+          "ephemeral_block_device": true,
+          "host_id": true,
+          "id": true,
+          "instance_state": true,
+          "ipv6_address_count": true,
+          "ipv6_addresses": true,
+          "metadata_options": true,
+          "network_interface": true,
+          "network_interface_id": true,
+          "outpost_arn": true,
+          "password_data": true,
+          "placement_group": true,
+          "primary_network_interface_id": true,
+          "private_dns": true,
+          "private_ip": true,
+          "public_dns": true,
+          "public_ip": true,
+          "root_block_device": true,
+          "security_groups": true,
+          "tags": {},
+          "volume_tags": {},
+          "vpc_security_group_ids": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "address": "module.ec2_cluster.aws_instance.this[3]",
+      "module_address": "module.ec2_cluster",
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "this",
+      "index": 3,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "ami": "ami-ebd02392",
+          "credit_specification": [
+            {
+              "cpu_credits": "standard"
+            }
+          ],
+          "disable_api_termination": false,
+          "ebs_optimized": false,
+          "get_password_data": false,
+          "hibernation": null,
+          "iam_instance_profile": "",
+          "instance_initiated_shutdown_behavior": "",
+          "instance_type": "t2.micro",
+          "key_name": "user1",
+          "monitoring": true,
+          "source_dest_check": true,
+          "subnet_id": "subnet-eddcdzz4",
+          "tags": {
+            "Environment": "dev",
+            "Name": "my-cluster-4",
+            "Terraform": "true"
+          },
+          "tenancy": "default",
+          "timeouts": null,
+          "user_data": null,
+          "user_data_base64": null,
+          "volume_tags": {
+            "Name": "my-cluster-4"
+          },
+          "vpc_security_group_ids": [
+            "sg-12345678"
+          ]
+        },
+        "after_unknown": {
+          "arn": true,
+          "associate_public_ip_address": true,
+          "availability_zone": true,
+          "cpu_core_count": true,
+          "cpu_threads_per_core": true,
+          "credit_specification": [
+            {}
+          ],
+          "ebs_block_device": true,
+          "ephemeral_block_device": true,
+          "host_id": true,
+          "id": true,
+          "instance_state": true,
+          "ipv6_address_count": true,
+          "ipv6_addresses": true,
+          "metadata_options": true,
+          "network_interface": true,
+          "network_interface_id": true,
+          "outpost_arn": true,
+          "password_data": true,
+          "placement_group": true,
+          "primary_network_interface_id": true,
+          "private_dns": true,
+          "private_ip": true,
+          "public_dns": true,
+          "public_ip": true,
+          "root_block_device": true,
+          "security_groups": true,
+          "tags": {},
+          "volume_tags": {},
+          "vpc_security_group_ids": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "address": "module.ec2_cluster.aws_instance.this[4]",
+      "module_address": "module.ec2_cluster",
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "this",
+      "index": 4,
+      "provider_name": "aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "ami": "ami-ebd02392",
+          "credit_specification": [
+            {
+              "cpu_credits": "standard"
+            }
+          ],
+          "disable_api_termination": false,
+          "ebs_optimized": false,
+          "get_password_data": false,
+          "hibernation": null,
+          "iam_instance_profile": "",
+          "instance_initiated_shutdown_behavior": "",
+          "instance_type": "t2.micro",
+          "key_name": "user1",
+          "monitoring": true,
+          "source_dest_check": true,
+          "subnet_id": "subnet-eddcdzz4",
+          "tags": {
+            "Environment": "dev",
+            "Name": "my-cluster-5",
+            "Terraform": "true"
+          },
+          "tenancy": "default",
+          "timeouts": null,
+          "user_data": null,
+          "user_data_base64": null,
+          "volume_tags": {
+            "Name": "my-cluster-5"
+          },
+          "vpc_security_group_ids": [
+            "sg-12345678"
+          ]
+        },
+        "after_unknown": {
+          "arn": true,
+          "associate_public_ip_address": true,
+          "availability_zone": true,
+          "cpu_core_count": true,
+          "cpu_threads_per_core": true,
+          "credit_specification": [
+            {}
+          ],
+          "ebs_block_device": true,
+          "ephemeral_block_device": true,
+          "host_id": true,
+          "id": true,
+          "instance_state": true,
+          "ipv6_address_count": true,
+          "ipv6_addresses": true,
+          "metadata_options": true,
+          "network_interface": true,
+          "network_interface_id": true,
+          "outpost_arn": true,
+          "password_data": true,
+          "placement_group": true,
+          "primary_network_interface_id": true,
+          "private_dns": true,
+          "private_ip": true,
+          "public_dns": true,
+          "public_ip": true,
+          "root_block_device": true,
+          "security_groups": true,
+          "tags": {},
+          "volume_tags": {},
+          "vpc_security_group_ids": [
+            false
+          ]
+        }
+      }
+    }
+  ],
+  "configuration": {
+    "provider_config": {
+      "aws": {
+        "name": "aws",
+        "version_constraint": "~> 2.0",
+        "expressions": {
+          "region": {
+            "constant_value": "eu-west-1"
+          }
+        }
+      }
+    },
+    "root_module": {
+      "module_calls": {
+        "ec2_cluster": {
+          "source": "git::https://github.com/terraform-aws-modules/terraform-aws-ec2-instance.git",
+          "expressions": {
+            "ami": {
+              "constant_value": "ami-ebd02392"
+            },
+            "instance_count": {
+              "constant_value": 5
+            },
+            "instance_type": {
+              "constant_value": "t2.micro"
+            },
+            "key_name": {
+              "constant_value": "user1"
+            },
+            "monitoring": {
+              "constant_value": true
+            },
+            "name": {
+              "constant_value": "my-cluster"
+            },
+            "subnet_id": {
+              "constant_value": "subnet-eddcdzz4"
+            },
+            "tags": {
+              "constant_value": {
+                "Environment": "dev",
+                "Terraform": "true"
+              }
+            },
+            "vpc_security_group_ids": {
+              "constant_value": [
+                "sg-12345678"
+              ]
+            }
+          },
+          "module": {
+            "outputs": {
+              "arn": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of ARNs of instances"
+              },
+              "availability_zone": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of availability zones of instances"
+              },
+              "credit_specification": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of credit specification of instances"
+              },
+              "ebs_block_device_volume_ids": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of volume IDs of EBS block devices of instances"
+              },
+              "id": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of IDs of instances"
+              },
+              "instance_count": {
+                "expression": {
+                  "references": [
+                    "var.instance_count"
+                  ]
+                },
+                "description": "Number of instances to launch specified as argument to this module"
+              },
+              "instance_state": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of instance states of instances"
+              },
+              "ipv6_addresses": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of assigned IPv6 addresses of instances"
+              },
+              "key_name": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of key names of instances"
+              },
+              "password_data": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of Base-64 encoded encrypted password data for the instance"
+              },
+              "placement_group": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of placement groups of instances"
+              },
+              "primary_network_interface_id": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of IDs of the primary network interface of instances"
+              },
+              "private_dns": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of private DNS names assigned to the instances. Can only be used inside the Amazon EC2, and only available if you've enabled DNS hostnames for your VPC"
+              },
+              "private_ip": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of private IP addresses assigned to the instances"
+              },
+              "public_dns": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of public DNS names assigned to the instances. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC"
+              },
+              "public_ip": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of public IP addresses assigned to the instances, if applicable"
+              },
+              "root_block_device_volume_ids": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of volume IDs of root block devices of instances"
+              },
+              "security_groups": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of associated security groups of instances"
+              },
+              "subnet_id": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of IDs of VPC subnets of instances"
+              },
+              "tags": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of tags of instances"
+              },
+              "volume_tags": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of tags of volumes of instances"
+              },
+              "vpc_security_group_ids": {
+                "expression": {
+                  "references": [
+                    "aws_instance.this"
+                  ]
+                },
+                "description": "List of associated security groups of instances, if running in non-default VPC"
+              }
+            },
+            "resources": [
+              {
+                "address": "aws_instance.this",
+                "mode": "managed",
+                "type": "aws_instance",
+                "name": "this",
+                "provider_config_key": "ec2_cluster:aws",
+                "expressions": {
+                  "ami": {
+                    "references": [
+                      "var.ami"
+                    ]
+                  },
+                  "associate_public_ip_address": {
+                    "references": [
+                      "var.associate_public_ip_address"
+                    ]
+                  },
+                  "credit_specification": [
+                    {
+                      "cpu_credits": {
+                        "references": [
+                          "local.is_t_instance_type",
+                          "var.cpu_credits"
+                        ]
+                      }
+                    }
+                  ],
+                  "disable_api_termination": {
+                    "references": [
+                      "var.disable_api_termination"
+                    ]
+                  },
+                  "ebs_optimized": {
+                    "references": [
+                      "var.ebs_optimized"
+                    ]
+                  },
+                  "get_password_data": {
+                    "references": [
+                      "var.get_password_data"
+                    ]
+                  },
+                  "iam_instance_profile": {
+                    "references": [
+                      "var.iam_instance_profile"
+                    ]
+                  },
+                  "instance_initiated_shutdown_behavior": {
+                    "references": [
+                      "var.instance_initiated_shutdown_behavior"
+                    ]
+                  },
+                  "instance_type": {
+                    "references": [
+                      "var.instance_type"
+                    ]
+                  },
+                  "ipv6_address_count": {
+                    "references": [
+                      "var.ipv6_address_count"
+                    ]
+                  },
+                  "ipv6_addresses": {
+                    "references": [
+                      "var.ipv6_addresses"
+                    ]
+                  },
+                  "key_name": {
+                    "references": [
+                      "var.key_name"
+                    ]
+                  },
+                  "monitoring": {
+                    "references": [
+                      "var.monitoring"
+                    ]
+                  },
+                  "placement_group": {
+                    "references": [
+                      "var.placement_group"
+                    ]
+                  },
+                  "private_ip": {
+                    "references": [
+                      "var.private_ips",
+                      "var.private_ips",
+                      "count.index",
+                      "var.private_ip"
+                    ]
+                  },
+                  "source_dest_check": {
+                    "references": [
+                      "var.network_interface",
+                      "var.source_dest_check"
+                    ]
+                  },
+                  "subnet_id": {
+                    "references": [
+                      "var.network_interface",
+                      "var.subnet_id",
+                      "var.subnet_ids",
+                      "count.index"
+                    ]
+                  },
+                  "tags": {
+                    "references": [
+                      "var.instance_count",
+                      "var.use_num_suffix",
+                      "var.name",
+                      "count.index",
+                      "var.name",
+                      "var.tags"
+                    ]
+                  },
+                  "tenancy": {
+                    "references": [
+                      "var.tenancy"
+                    ]
+                  },
+                  "user_data": {
+                    "references": [
+                      "var.user_data"
+                    ]
+                  },
+                  "user_data_base64": {
+                    "references": [
+                      "var.user_data_base64"
+                    ]
+                  },
+                  "volume_tags": {
+                    "references": [
+                      "var.instance_count",
+                      "var.use_num_suffix",
+                      "var.name",
+                      "count.index",
+                      "var.name",
+                      "var.volume_tags"
+                    ]
+                  },
+                  "vpc_security_group_ids": {
+                    "references": [
+                      "var.vpc_security_group_ids"
+                    ]
+                  }
+                },
+                "schema_version": 1,
+                "count_expression": {
+                  "references": [
+                    "var.instance_count"
+                  ]
+                }
+              }
+            ],
+            "variables": {
+              "ami": {
+                "description": "ID of AMI to use for the instance"
+              },
+              "associate_public_ip_address": {
+                "default": null,
+                "description": "If true, the EC2 instance will have associated public IP address"
+              },
+              "cpu_credits": {
+                "default": "standard",
+                "description": "The credit option for CPU usage (unlimited or standard)"
+              },
+              "disable_api_termination": {
+                "default": false,
+                "description": "If true, enables EC2 Instance Termination Protection"
+              },
+              "ebs_block_device": {
+                "default": [],
+                "description": "Additional EBS block devices to attach to the instance"
+              },
+              "ebs_optimized": {
+                "default": false,
+                "description": "If true, the launched EC2 instance will be EBS-optimized"
+              },
+              "ephemeral_block_device": {
+                "default": [],
+                "description": "Customize Ephemeral (also known as Instance Store) volumes on the instance"
+              },
+              "get_password_data": {
+                "default": false,
+                "description": "If true, wait for password data to become available and retrieve it."
+              },
+              "iam_instance_profile": {
+                "default": "",
+                "description": "The IAM Instance Profile to launch the instance with. Specified as the name of the Instance Profile."
+              },
+              "instance_count": {
+                "default": 1,
+                "description": "Number of instances to launch"
+              },
+              "instance_initiated_shutdown_behavior": {
+                "default": "",
+                "description": "Shutdown behavior for the instance"
+              },
+              "instance_type": {
+                "description": "The type of instance to start"
+              },
+              "ipv6_address_count": {
+                "default": null,
+                "description": "A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet."
+              },
+              "ipv6_addresses": {
+                "default": null,
+                "description": "Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface"
+              },
+              "key_name": {
+                "default": "",
+                "description": "The key name to use for the instance"
+              },
+              "monitoring": {
+                "default": false,
+                "description": "If true, the launched EC2 instance will have detailed monitoring enabled"
+              },
+              "name": {
+                "description": "Name to be used on all resources as prefix"
+              },
+              "network_interface": {
+                "default": [],
+                "description": "Customize network interfaces to be attached at instance boot time"
+              },
+              "placement_group": {
+                "default": "",
+                "description": "The Placement Group to start the instance in"
+              },
+              "private_ip": {
+                "default": null,
+                "description": "Private IP address to associate with the instance in a VPC"
+              },
+              "private_ips": {
+                "default": [],
+                "description": "A list of private IP address to associate with the instance in a VPC. Should match the number of instances."
+              },
+              "root_block_device": {
+                "default": [],
+                "description": "Customize details about the root block device of the instance. See Block Devices below for details"
+              },
+              "source_dest_check": {
+                "default": true,
+                "description": "Controls if traffic is routed to the instance when the destination address does not match the instance. Used for NAT or VPNs."
+              },
+              "subnet_id": {
+                "default": "",
+                "description": "The VPC Subnet ID to launch in"
+              },
+              "subnet_ids": {
+                "default": [],
+                "description": "A list of VPC Subnet IDs to launch in"
+              },
+              "tags": {
+                "default": {},
+                "description": "A mapping of tags to assign to the resource"
+              },
+              "tenancy": {
+                "default": "default",
+                "description": "The tenancy of the instance (if the instance is running in a VPC). Available values: default, dedicated, host."
+              },
+              "use_num_suffix": {
+                "default": false,
+                "description": "Always append numerical suffix to instance name, even if instance_count is 1"
+              },
+              "user_data": {
+                "default": null,
+                "description": "The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see user_data_base64 instead."
+              },
+              "user_data_base64": {
+                "default": null,
+                "description": "Can be used instead of user_data to pass base64-encoded binary data directly. Use this instead of user_data whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption."
+              },
+              "volume_tags": {
+                "default": {},
+                "description": "A mapping of tags to assign to the devices created by the instance at launch time"
+              },
+              "vpc_security_group_ids": {
+                "default": null,
+                "description": "A list of security group IDs to associate with"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
